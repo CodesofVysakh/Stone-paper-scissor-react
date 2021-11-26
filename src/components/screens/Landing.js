@@ -11,18 +11,56 @@ function Landing() {
     const [compChoice, setCompChoice] = useState("")
     const [userScore, setUserScore] = useState(0)
     const [compScore, setCompScore] = useState(0)
+    const [output, setoutput] = useState("")
+    const [count, setCount] = useState(0)
 
-
-    useEffect(() => {
-        
-    }, [])
-
+    var options = [Rock,Paper,Scissor];
+    
     let setChoice = (choice) => {
-        console.log(choice);
         setUserChoice(choice)
-
-
+        setCompChoice(options[Math.floor(Math.random() * options.length)])
+        setCount(count + 1);
+        
     }
+    
+    useEffect(() => {
+        console.log("UScore",userScore);
+        console.log("CScore",compScore);
+        if (userChoice == Rock) {
+            if (compChoice == Scissor) {
+                setoutput("You Win!!");
+                setUserScore(userScore + 1);
+            }else if(compChoice == Paper) {
+                setoutput("Computer Wins!!");
+                setCompScore(compScore + 1);
+            }else {
+                setoutput("Draw!!");
+            }
+        }
+        else if (userChoice == Paper) {
+            if (compChoice == Rock) {
+                setoutput("You Win!!");
+                setUserScore(userScore + 1);
+            }else if(compChoice == Scissor) {
+                setoutput("Computer Wins!!");
+                setCompScore(compScore + 1);
+            }else {
+                setoutput("Draw!!");
+            }
+        }
+        else if (userChoice == Scissor) {
+            if (compChoice == Paper) {
+                setoutput("You Win!!");
+                setUserScore(userScore + 1);
+            }else if(compChoice == Rock) {
+                setoutput("Computer Wins!!");
+                setCompScore(compScore + 1);
+            }else {
+                setoutput("Draw!!");
+            }
+        }
+        
+    },[count])
     return (
         <Body>
             <Title>Stone-Paper-Scissor</Title>
@@ -62,30 +100,38 @@ function Landing() {
                             </GestureContainer>
                             <MidGestureContainer>
                                 <ChoiceContainer>
-                                    <ChoiceImage src={Rock} alt="" />
+                                    <ChoiceImage src={compChoice} alt="" />
                                 </ChoiceContainer>
                             </MidGestureContainer>
+                            <BottomScoreConatainer>
+                                <Score>{compScore}</Score>
+                            </BottomScoreConatainer>
                         </LeftContainer>
                         <MiddleContainer>
-
+                            <WinTag>
+                                {output}
+                            </WinTag>
                         </MiddleContainer>
                         <RightContainer>
                             <GestureContainer>
-                                <RockImage>
-                                    <GestureImage src={Rock} alt="Image" onClick={() => setChoice("Rock")} />
+                                <RockImage onClick={() => setChoice(Rock)}>
+                                    <GestureImage src={Rock} alt="Image" />
                                 </RockImage>
-                                <PaperImage>
-                                    <GestureImage src={Paper} alt="Image" onClick={() => setChoice("Paper")} />
+                                <PaperImage onClick={() => setChoice(Paper)}>
+                                    <GestureImage src={Paper} alt="Image" />
                                 </PaperImage>
-                                <ScissorImage>
-                                    <GestureImage src={Scissor} alt="Image" onClick={() => setChoice("Scissor")} />
+                                <ScissorImage onClick={() => setChoice(Scissor)}>
+                                    <GestureImage src={Scissor} alt="Image" />
                                 </ScissorImage>
                             </GestureContainer>
                             <RightMidGestureContainer>
                                 <ChoiceContainer>
-                                    <ChoiceImage src={Paper} alt="" />
+                                    <ChoiceImage src={userChoice} alt="" />
                                 </ChoiceContainer>
                             </RightMidGestureContainer>
+                            <BottomScoreConatainer>
+                                <Score>{userScore}</Score>
+                            </BottomScoreConatainer>
                         </RightContainer>
                     </BodyContainer>
                 </BottomContainer>
@@ -191,6 +237,17 @@ const MiddleContainer = styled.div`
     transform: translateX(50%);
     right: 35%;
     transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+const WinTag = styled.h3`
+    font-size: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+	background: linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 `;
 const RightContainer = styled.div`
     background-color: #396EB0;
@@ -216,6 +273,21 @@ const RightMidGestureContainer = styled.div`
     margin-left: auto;
     padding: 35px 0;
 `;
+const BottomScoreConatainer = styled.div`
+    border: 5px groove yellowgreen;
+    border-radius: 2px;
+    width: 80%;
+    margin: 0 auto;
+`;
+const Score = styled.h1`
+    color: #fff;
+    background-color: #000;
+    margin: unset;
+    padding: 10px 0;
+    font-size: 35px;
+    font-family: cursive;
+    font-weight: bold;
+`;
 const ChoiceContainer = styled.div`
     background-color: red;
     height: 250px;
@@ -225,7 +297,7 @@ const ChoiceContainer = styled.div`
     align-items: center;
 `;
 const ChoiceImage = styled.img`
-    width: 80%;
+    width: 180px;
     object-fit: contain;
     display: block;
 `;
