@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Stone-paper-scissor-react/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/Stone-paper-scissor-react/static/js/main.b9b81564.chunk.js",
-    "main.js.map": "/Stone-paper-scissor-react/static/js/main.b9b81564.chunk.js.map",
+    "main.js": "/Stone-paper-scissor-react/static/js/main.acae9b70.chunk.js",
+    "main.js.map": "/Stone-paper-scissor-react/static/js/main.acae9b70.chunk.js.map",
     "runtime-main.js": "/Stone-paper-scissor-react/static/js/runtime-main.868ebbf5.js",
     "runtime-main.js.map": "/Stone-paper-scissor-react/static/js/runtime-main.868ebbf5.js.map",
     "static/js/2.86e78074.chunk.js": "/Stone-paper-scissor-react/static/js/2.86e78074.chunk.js",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.868ebbf5.js",
     "static/js/2.86e78074.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.b9b81564.chunk.js"
+    "static/js/main.acae9b70.chunk.js"
   ]
 }
